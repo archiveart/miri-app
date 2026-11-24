@@ -771,6 +771,21 @@ input[type="checkbox"],input[type="radio"]{accent-color:#00A383}
 .row__s{font-size:14px;line-height:1.4;letter-spacing:-.015em;color:var(--ink-2)}
 .row__side{font-size:15px;line-height:1.4;font-weight:700;letter-spacing:-.02em;white-space:nowrap}
 .row__side .num{font-size:15px;font-weight:700}
+
+/* guided journey */
+.tourbtn{background:#15181C!important;color:#fff!important}
+.tour-ring{position:fixed;z-index:9998;pointer-events:none;border-radius:18px;box-shadow:0 0 0 3px #15181C,0 0 0 7px rgba(44,229,185,.9);animation:tourpulse 1.2s ease-in-out infinite;transition:left .25s,top .25s,width .25s,height .25s}
+@keyframes tourpulse{0%,100%{box-shadow:0 0 0 3px #15181C,0 0 0 7px rgba(44,229,185,.9)}50%{box-shadow:0 0 0 3px #15181C,0 0 0 14px rgba(44,229,185,.35)}}
+.tour-card{position:fixed;z-index:9999;background:#15181C;color:#fff;border-radius:20px;padding:16px 18px 14px;box-shadow:0 12px 32px rgba(0,0,0,.28);font-family:"Miri Pretendard",Pretendard,system-ui,sans-serif;transition:top .25s}
+.tour-card__k{font-size:13px;font-weight:700;letter-spacing:-.01em;color:#2CE5B9;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
+.tour-card__t{font-size:17px;font-weight:700;line-height:1.38;letter-spacing:-.03em;word-break:keep-all;margin-bottom:4px}
+.tour-card__d{font-size:14.5px;line-height:1.5;letter-spacing:-.02em;color:#C9CED5;word-break:keep-all}
+.tour-card__b{display:flex;gap:8px;margin-top:12px}
+.tour-card__b button{border:0;border-radius:999px;height:42px;padding:0 18px;font:700 15px/1 inherit;font-family:inherit;letter-spacing:-.02em;cursor:pointer}
+.tour-card__next{background:#2CE5B9;color:#053A30;flex:1}
+.tour-card__quit{background:#2A2F36;color:#C9CED5}
+.tour-card__bar{height:4px;border-radius:2px;background:#2A2F36;margin-top:12px;overflow:hidden}
+.tour-card__bar i{display:block;height:100%;background:#2CE5B9;border-radius:2px;transition:width .3s}
 </style>
 </head>
 <body>
@@ -797,7 +812,7 @@ input[type="checkbox"],input[type="radio"]{accent-color:#00A383}
           <li><b>쌓일수록 맞춰져요</b><span>영수증을 기록할수록 예상 금액과 시기가 우리 아이에게 맞춰져요.</span></li>
         </ul>
       </div>
-      <div class="intro__foot"><button class="btn" data-intro="close">둘러보기</button><button class="btn btn--plain" data-intro="signup">우리 아이 등록하기</button></div>
+      <div class="intro__foot"><button class="btn tourbtn" data-tour="start">여정 따라가기 · 1분</button><button class="btn" data-intro="close">둘러보기</button><button class="btn btn--plain" data-intro="signup">우리 아이 등록하기</button></div>
     </section>
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
   </div>
@@ -3122,6 +3137,72 @@ window.addEventListener('hashchange', () => { const h = location.hash.slice(1); 
     return s.limits().then(l => { if (l && l.images) { UI.img = true; UI.imgTypes = (l.images.mediaTypes || []).join(','); } }, () => { /* no image support in this view */ });
   });
   initSync();
+})();
+</script>
+
+<script>
+/* guided journey: follows one visit from first open to concierge */
+(function(){
+  var STEPS=[
+    {sel:'#intro [data-intro="close"]',k:'처음 만남',t:'토리 보호자가 미리를 처음 엽니다',d:'미리가 하는 일 세 가지를 보고, 둘러보기를 눌러 시작해요.',skipIfHidden:true},
+    {sel:'#tabbar [data-tab="cards"]',k:'병원 가기 전',t:'오늘 화면이 먼저 알려 줘요',d:'내일 예약과 챙길 일이 한눈에 보여요. 앞으로 생길 일은 미리 카드에 모여 있어요.'},
+    {sel:'#view [data-act="card"]',k:'병원 가기 전',t:'앞으로 생길 일을 카드로 미리 봐요',d:'나이와 견종에 맞춰 준비할 일이 나와요. 첫 카드를 눌러 볼게요.'},
+    {sel:'#sheets .sheet__body',k:'병원 가기 전',t:'얼마가 들지 미리 알아요',d:'꼭 할 것과 골라도 되는 것을 나눠서, 예상 금액 범위를 보여 줘요.',look:true},
+    {sel:'#sheets [data-act="back"]',k:'병원 가기 전',t:'다 봤으면 뒤로',d:'이제 병원 가는 날로 넘어갈게요.'},
+    {sel:'#tabbar [data-tab="home"]',k:'병원에서',t:'병원 가는 날이에요',d:'오늘 화면으로 돌아가요.'},
+    {sel:'.quick [data-act="vet"]',k:'병원에서',t:'말 꺼내기 어려울 때',d:'접수대에서 병원에 보여주기를 눌러요.'},
+    {sel:'#sheets .sheet__body',k:'병원에서',t:'화면이 대신 부탁해 줘요',d:'비용을 먼저 알려 달라는 부탁을 직원에게 보여 주기만 하면 돼요.',look:true},
+    {sel:'#sheets [data-act="back"]',k:'병원에서',t:'진료가 끝났어요',d:'뒤로 가서 오늘 진료를 기록할게요.'},
+    {sel:'#tabbar [data-tab="log"]',k:'다녀온 뒤',t:'기록으로 남겨요',d:'병원이 바뀌어도 이어지는 진료 기록이에요.'},
+    {sel:'#view [data-act="record"]',k:'다녀온 뒤',t:'영수증을 적으면 비교해 줘요',d:'전국 평균과 견줘서, 다음 예상 금액이 우리 아이에게 더 맞춰져요.',look:true},
+    {sel:'#tabbar [data-tab="concierge"]',k:'바쁠 때',t:'직접 가기 어려운 날도 있어요',d:'그럴 땐 컨시어지에게 맡겨요.'},
+    {sel:'#view [data-type="escort"]',fallback:'#view',k:'바쁠 때',t:'병원 동행 대행',d:'컨시어지가 아이를 데리고 병원에 다녀와요. 정해 둔 금액 안에서만 결제해요. 여정은 여기까지예요.',look:true,last:true}
+  ];
+  var i=-1,ring,card,timer,armed=false;
+  function vis(el){ if(!el) return false; var r=el.getBoundingClientRect(); return r.width>0&&r.height>0&&getComputedStyle(el).visibility!=='hidden'; }
+  function target(){ var s=STEPS[i]; if(!s) return null; var el=document.querySelector(s.sel); if(!vis(el)&&s.fallback) el=document.querySelector(s.fallback); return vis(el)?el:null; }
+  function build(){
+    ring=document.createElement('div'); ring.className='tour-ring';
+    card=document.createElement('div'); card.className='tour-card'; card.setAttribute('role','status');
+    card.innerHTML='<div class="tour-card__k"><span data-k></span><span data-n></span></div><div class="tour-card__t" data-t></div><div class="tour-card__d" data-d></div><div class="tour-card__b"><button type="button" class="tour-card__quit" data-tour="quit">그만 보기</button><button type="button" class="tour-card__next" data-tour="next">다음</button></div><div class="tour-card__bar"><i></i></div>';
+    document.body.appendChild(ring); document.body.appendChild(card);
+  }
+  function place(){
+    if(i<0) return; var el=target(), ph=document.getElementById('phone'), pr=ph?ph.getBoundingClientRect():{left:0,top:0,width:innerWidth,height:innerHeight,bottom:innerHeight};
+    var w=Math.min(pr.width-24,400); card.style.width=w+'px'; card.style.left=(pr.left+(pr.width-w)/2)+'px';
+    if(!el){ ring.style.display='none'; card.style.top=(pr.top+pr.height-card.offsetHeight-96)+'px'; return; }
+    var r=el.getBoundingClientRect(), top=Math.max(r.top,pr.top+4), bot=Math.min(r.bottom,pr.top+pr.height-4);
+    ring.style.display=bot>top?'block':'none';
+    ring.style.left=(r.left-4)+'px'; ring.style.top=(top-4)+'px'; ring.style.width=(r.width+8)+'px'; ring.style.height=(bot-top+8)+'px';
+    var mid=(top+bot)/2, ch=card.offsetHeight;
+    var below=bot+16, above=top-ch-16;
+    var y = (mid < pr.top+pr.height/2) ? (below+ch<=pr.top+pr.height-8?below:pr.top+pr.height-ch-12) : (above>=pr.top+8?above:pr.top+12);
+    card.style.top=y+'px';
+  }
+  function show(n){
+    i=n; var s=STEPS[i]; if(!s){ stop(); return; }
+    if(s.skipIfHidden&&!target()){ show(i+1); return; }
+    if(!ring) build();
+    card.querySelector('[data-k]').textContent=s.k; card.querySelector('[data-n]').textContent=(i+1)+' / '+STEPS.length;
+    card.querySelector('[data-t]').textContent=s.t; card.querySelector('[data-d]').textContent=s.d;
+    card.querySelector('[data-tour="next"]').textContent=s.last?'처음부터 자유롭게 보기':(s.look?'다음':'눌러 보기');
+    card.querySelector('.tour-card__bar i').style.width=((i+1)/STEPS.length*100)+'%';
+    armed=false; setTimeout(function(){ var el=target(); if(el&&el.scrollIntoView&&!el.closest('#tabbar')) el.scrollIntoView({block:'center',behavior:'smooth'}); armed=true; },120);
+    clearInterval(timer); timer=setInterval(place,150); place();
+  }
+  function stop(){ clearInterval(timer); i=-1; if(ring){ ring.remove(); card.remove(); ring=card=null; } }
+  function next(){ var s=STEPS[i]; if(!s) return; if(s.last){ stop(); return; } var el=target(); var n=i+1; if(!s.look&&el){ armed=false; el.click(); } setTimeout(function(){ if(i===n-1) show(n); },380); }
+  document.addEventListener('click',function(e){
+    var b=e.target.closest&&e.target.closest('[data-tour]');
+    if(b){ var a=b.getAttribute('data-tour'); e.preventDefault(); e.stopPropagation();
+      if(a==='start'){ var c=document.querySelector('#intro [data-intro="close"]'); if(c&&vis(c)) c.click(); setTimeout(function(){ var h=document.querySelector('#tabbar [data-tab="home"]'); if(h) h.click(); show(1); },380); }
+      else if(a==='next') next(); else if(a==='quit') stop();
+      return; }
+    if(i<0||!armed) return; var s=STEPS[i]; if(s.look) return; var el=target();
+    if(el&&(el===e.target||el.contains(e.target))){ var n=i+1; setTimeout(function(){ if(i===n-1) show(n); },380); }
+  },true);
+  window.addEventListener('resize',place);
+  if(/[?&#]tour\b/.test(location.search+location.hash)) window.addEventListener('load',function(){ setTimeout(function(){ show(0); },700); });
 })();
 </script>
 </body>
