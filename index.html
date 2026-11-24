@@ -848,6 +848,87 @@ input[type="checkbox"],input[type="radio"]{accent-color:#00A383}
 .kgnote b{font-weight:800}
 .kgbadge{display:inline-flex;align-items:baseline;gap:5px;align-self:flex-start;background:#15181C;color:#fff;border-radius:999px;padding:5px 12px;margin:6px 0 4px;font-size:13px;font-weight:600;letter-spacing:-.015em}
 .kgbadge b{color:#2CE5B9;font-size:15px;font-weight:800}
+
+/* easy-to-find AI entry: ask bar at the top of home + floating button on every tab */
+.askbar{display:flex;align-items:center;gap:12px;width:100%;border:0;text-align:left;background:#15181C;color:#fff;border-radius:20px;padding:14px 16px;margin:14px 0 4px;font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.askbar .butler__face{width:44px;height:44px}
+.askbar__t{flex:1;min-width:0}
+.askbar b{display:block;font-size:17px;font-weight:700;letter-spacing:-.03em;line-height:1.35}
+.askbar small{display:block;font-size:13.5px;color:#C9CED5;letter-spacing:-.015em;line-height:1.4}
+.askbar i{font-style:normal;font-size:12px;font-weight:800;background:#2CE5B9;color:#053A30;border-radius:8px;padding:4px 8px;flex:none}
+.aifab{position:absolute;right:14px;bottom:calc(92px + env(safe-area-inset-bottom,0px));z-index:20;display:flex;align-items:center;gap:8px;border:0;border-radius:999px;background:#15181C;color:#fff;padding:7px 16px 7px 7px;box-shadow:0 8px 22px rgba(21,24,28,.32);font-family:"Miri Pretendard",Pretendard,system-ui,sans-serif;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.aifab .butler__face{width:38px;height:38px}.aifab .butler__face svg{width:24px;height:24px}
+.aifab b{font-size:15px;font-weight:700;letter-spacing:-.025em;white-space:nowrap}
+
+/* simpler screens: fold the lower home sections and the long parts of detail sheets */
+.is-folded{display:none!important}
+.morebtn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:54px;border:0;border-radius:18px;background:var(--fill);color:var(--ink);font:700 16px/1.3 inherit;font-family:inherit;letter-spacing:-.025em;margin:8px 0 4px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.morebtn small{font-size:13.5px;font-weight:500;color:var(--ink-2);letter-spacing:-.015em}
+.morebtn::after{content:"";width:8px;height:8px;border-right:2px solid var(--ink-2);border-bottom:2px solid var(--ink-2);transform:rotate(45deg);margin-top:-4px}
+.morebtn[aria-expanded="true"]::after{transform:rotate(-135deg);margin-top:4px}
+.clamp{display:-webkit-box!important;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;cursor:pointer}
+.clamp.is-open{display:block!important}
+#view{padding-bottom:84px}
+.clamp1{-webkit-line-clamp:1}
+#view .notice__in>p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.sheet .est__total>p,.sheet .cap .t-xs,.sheet .sheet__body>p.t-xs{display:none}
+.fold{border-top:1px solid var(--line);padding-top:4px;margin-top:0}
+.fold>.sec__h{cursor:pointer;min-height:56px;align-items:center;margin:0}
+.fold>.sec__h h2{font-size:17px}
+.fold>.sec__h::after{content:"";width:8px;height:8px;border-right:2px solid var(--ink-2);border-bottom:2px solid var(--ink-2);transform:rotate(45deg);flex:none;margin-right:6px}
+.fold.is-open>.sec__h::after{transform:rotate(-135deg)}
+.fold:not(.is-open)>*:not(.sec__h){display:none!important}
+.fold>.sec__h .link{display:none}
+
+/* life journey: one home card -> one timeline screen (health, birthday, album, farewell) */
+.lifecard{background:var(--fill);border-radius:22px;padding:18px 16px 16px;margin:6px 0 4px}
+.lifecard__h{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:14px}
+.lifecard__h b{font-size:18px;font-weight:700;letter-spacing:-.03em;line-height:1.35;color:var(--ink)}
+.lifecard__h span{font-size:13.5px;font-weight:600;color:var(--blue-ink);letter-spacing:-.015em;white-space:nowrap}
+.lifecard__track{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;position:relative}
+.lifecard__track::before{content:"";position:absolute;left:12.5%;right:12.5%;top:23px;height:2px;background:var(--fill-2)}
+.lifecard__track button{border:0;background:none;padding:0;display:flex;flex-direction:column;align-items:center;gap:7px;font-family:inherit;cursor:pointer;position:relative;-webkit-tap-highlight-color:transparent}
+.lifecard__track i{width:46px;height:46px;border-radius:50%;background:#fff;display:grid;place-items:center;font-style:normal;box-shadow:0 0 0 1px var(--line)}
+.lifecard__track button:first-child i{background:var(--mint);box-shadow:none}
+.lifecard__track svg{width:22px;height:22px;fill:#053A30}
+.lifecard__track b{font-size:13.5px;font-weight:700;letter-spacing:-.02em;color:var(--ink);line-height:1.3;text-align:center}
+.lifecard__track small{font-size:12px;color:var(--ink-2);letter-spacing:-.01em;line-height:1.2}
+.life{position:absolute;inset:0;z-index:38;background:#fff;display:flex;flex-direction:column;font-family:"Miri Pretendard",Pretendard,system-ui,sans-serif;color:#15181C}
+.life__bar{display:flex;align-items:center;gap:8px;padding:max(8px,env(safe-area-inset-top)) 12px 8px}
+.life__bar b{font-size:17px;font-weight:700;letter-spacing:-.03em}
+.life__back{border:0;background:#F4F5F7;color:#15181C;border-radius:999px;height:44px;padding:0 14px;font:700 15px/1 inherit;font-family:inherit;letter-spacing:-.02em;cursor:pointer}
+.life__body{flex:1;overflow-y:auto;padding:8px 18px 32px}
+.life__lead{font-size:24px;font-weight:800;letter-spacing:-.04em;line-height:1.3;margin:6px 0 4px;word-break:keep-all}
+.life__sub{font-size:15px;color:#4A515C;letter-spacing:-.02em;line-height:1.5;margin:0 0 18px;word-break:keep-all}
+.lstage{position:relative;padding-left:34px;padding-bottom:14px}
+.lstage::before{content:"";position:absolute;left:10px;top:26px;bottom:-4px;width:2px;background:#E6E9ED}
+.lstage:last-child::before{display:none}
+.lstage__dot{position:absolute;left:0;top:14px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 2px #C9CED5}
+.lstage.is-open .lstage__dot{background:#2CE5B9;box-shadow:inset 0 0 0 6px #2CE5B9,0 0 0 4px #DCFBF2}
+.lstage__h{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;border:0;background:#F4F5F7;border-radius:18px;padding:14px 16px;text-align:left;font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.lstage.is-open .lstage__h{background:#15181C;color:#fff}
+.lstage__h small{display:block;font-size:12.5px;font-weight:700;color:#00856A;letter-spacing:-.01em;margin-bottom:2px}
+.lstage.is-open .lstage__h small{color:#2CE5B9}
+.lstage__h b{display:block;font-size:17px;font-weight:700;letter-spacing:-.03em;line-height:1.35}
+.lstage__h em{font-style:normal;font-size:13.5px;font-weight:600;white-space:nowrap;opacity:.8}
+.lstage__c{display:none;padding:14px 2px 4px}
+.lstage.is-open .lstage__c{display:block}
+.lstage__p{font-size:15px;line-height:1.5;letter-spacing:-.02em;color:#4A515C;margin:0 0 12px;word-break:keep-all}
+.lchk{display:flex;align-items:center;gap:12px;min-height:48px;padding:6px 2px;font-size:15.5px;letter-spacing:-.02em;line-height:1.4;border-bottom:1px solid #F1F3F5;cursor:pointer;word-break:keep-all}
+.lchk:last-child{border-bottom:0}
+.lchk input{width:22px;height:22px;accent-color:#14D2A4;flex:none;margin:0}
+.lchk input:checked+span{color:#8A929D;text-decoration:line-through}
+.lkv{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.lkv div{background:#DCFBF2;border-radius:16px;padding:12px 14px}
+.lkv small{display:block;font-size:12.5px;font-weight:600;color:#00856A;letter-spacing:-.01em}
+.lkv b{display:block;font-size:20px;font-weight:800;letter-spacing:-.03em;color:#053A30;line-height:1.3}
+.lalbum{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.lalbum>*{aspect-ratio:1;border-radius:14px;overflow:hidden;background:#DCFBF2}
+.lalbum img{width:100%;height:100%;object-fit:cover;display:block}
+.lalbum label{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;background:#F4F5F7;color:#15181C;font-size:13.5px;font-weight:700;letter-spacing:-.02em;cursor:pointer}
+.lalbum label i{font-style:normal;font-size:26px;line-height:1;font-weight:500}
+.lalbum input{position:absolute;opacity:0;width:1px;height:1px}
+.lsoft{background:#F4F5F7;border-radius:16px;padding:14px 16px;font-size:14.5px;line-height:1.5;letter-spacing:-.02em;color:#4A515C;margin-bottom:10px;word-break:keep-all}
 </style>
 </head>
 <body>
@@ -3218,7 +3299,9 @@ window.addEventListener('hashchange', () => { const h = location.hash.slice(1); 
     {sel:'#tabbar [data-tab="log"]',k:'다녀온 뒤',t:'기록으로 남겨요',d:'병원이 바뀌어도 이어지는 진료 기록이에요.'},
     {sel:'#view [data-act="record"]',k:'다녀온 뒤',t:'영수증을 적으면 비교해 줘요',d:'전국 평균과 견줘서, 다음 예상 금액이 우리 아이에게 더 맞춰져요.',look:true},
     {sel:'#tabbar [data-tab="concierge"]',k:'바쁠 때',t:'직접 가기 어려운 날도 있어요',d:'그럴 땐 컨시어지에게 맡겨요.'},
-    {sel:'#view [data-type="escort"]',fallback:'#view',k:'바쁠 때',t:'병원 동행 대행',d:'컨시어지가 아이를 데리고 병원에 다녀와요. 정해 둔 금액 안에서만 결제해요. 여정은 여기까지예요.',look:true,last:true}
+    {sel:'#view [data-type="escort"]',fallback:'#view',k:'바쁠 때',t:'병원 동행 대행',d:'컨시어지가 아이를 데리고 병원에 다녀와요. 정해 둔 금액 안에서만 결제해요.',look:true},
+    {sel:'#tabbar [data-tab="home"]',k:'병원 밖에서도',t:'병원 가는 날이 전부는 아니에요',d:'오늘 화면으로 돌아가요.'},
+    {sel:'#view .lifecard',k:'병원 밖에서도',t:'지금부터 마지막까지 함께해요',d:'건강 습관, 생일, 사진 앨범, 무지개다리 준비까지 한곳에 모았어요. 여정은 여기까지예요.',look:true,last:true}
   ];
   var i=-1,ring,card,timer,armed=false;
   function vis(el){ if(!el) return false; var r=el.getBoundingClientRect(); return r.width>0&&r.height>0&&getComputedStyle(el).visibility!=='hidden'; }
@@ -3321,14 +3404,23 @@ window.addEventListener('hashchange', () => { const h = location.hash.slice(1); 
   }
   function paint(){
     var v=document.getElementById('view'); if(!v) return;
-    var q=v.querySelector('.quick');
-    if(q&&!v.querySelector('.butler')){
-      var d=document.createElement('section'); d.className='butler'; d.setAttribute('aria-label','미리 컨시어지');
-      d.innerHTML='<div class="butler__top"><span class="butler__face">'+FACE+'</span><div><div class="butler__n">미리 컨시어지 <i>AI</i></div><div class="butler__k">물어보면 답하고, 대신 알아봐 드려요</div></div></div>'
-        +'<div class="butler__chips">'+QA.slice(0,3).map(function(x,i){return '<button type="button" data-bopen="'+i+'">'+x.q+'</button>';}).join('')+'</div>'
-        +'<button type="button" class="butler__ask" data-bopen="">컨시어지에게 물어보기</button>'
-        +'<button type="button" class="butler__care" data-bdo="all"><span><b>병원 동행 케어</b><small>케어 매니저가 병원에 데려다줘요</small></span></button>';
-      q.insertAdjacentElement('afterend',d);
+    petName();
+    var sw=v.querySelector('nav[aria-label="강아지 바꾸기"]')||v.querySelector('.herocard');
+    if(sw&&v.querySelector('.quick')&&!v.querySelector('.askbar')){
+      var d=document.createElement('button'); d.type='button'; d.className='askbar'; d.setAttribute('data-bopen','');
+      d.innerHTML='<span class="butler__face">'+FACE+'</span><span class="askbar__t"><b>AI 컨시어지에게 물어보기</b><small>병원비, 검사, 병원 동행까지 답해 드려요</small></span><i>AI</i>';
+      sw.insertAdjacentElement('beforebegin',d);
+    }
+    var ph=document.getElementById('phone');
+    if(ph&&!ph.querySelector('.aifab')){
+      var f=document.createElement('button'); f.type='button'; f.className='aifab'; f.setAttribute('data-bopen',''); f.setAttribute('aria-label','AI 컨시어지에게 물어보기');
+      f.innerHTML='<span class="butler__face">'+FACE+'</span><b>AI에게 물어보기</b>';
+      ph.appendChild(f);
+      setInterval(function(){
+        var intro=document.getElementById('intro'), iv=intro&&intro.getBoundingClientRect().width>0&&getComputedStyle(intro).display!=='none'&&getComputedStyle(intro).visibility!=='hidden'&&getComputedStyle(intro).opacity!=='0';
+        var hide=!!document.querySelector('#sheets .sheet')||iv||!!document.querySelector('.bchat,.life');
+        f.style.display=hide?'none':'';
+      },250);
     }
     var h=v.querySelector('h1.t-lg');
     if(h&&h.textContent.trim()==='미리 컨시어지'&&!v.querySelector('.care')){
@@ -3365,5 +3457,129 @@ window.addEventListener('hashchange', () => { const h = location.hash.slice(1); 
 })();
 </script>
 
+
+<script>
+/* simpler screens: fold lower home sections, clamp long text, fold detail sections */
+(function(){
+  var open=false;
+  function home(){
+    var v=document.getElementById('view'); if(!v||!v.querySelector('.quick')) return;
+    var secs=[].slice.call(v.querySelectorAll('section.sec')), anchor=null;
+    for(var i=0;i<secs.length;i++){ var h=secs[i].querySelector('.sec__h h2'); if(h&&/이어서 챙길 일/.test(h.textContent)){ anchor=secs[i]; break; } }
+    if(!anchor){ for(var j=0;j<secs.length;j++){ if(secs[j].querySelector('.duo')){ anchor=secs[j].previousElementSibling; break; } } }
+    if(!anchor) return;
+    var ad=v.querySelector('section.adopt'); if(ad&&ad.parentElement&&ad.parentElement.lastElementChild!==ad&&!ad.nextElementSibling.classList.contains('adopt')){ var last=ad.parentElement.lastElementChild; if(last!==ad) ad.parentElement.appendChild(ad); }
+    var rest=[], n=anchor.nextElementSibling;
+    while(n){ if(n.tagName==='SECTION') rest.push(n); n=n.nextElementSibling; }
+    if(!rest.length) return;
+    var btn=v.querySelector('.morebtn');
+    if(!btn){ btn=document.createElement('button'); btn.type='button'; btn.className='morebtn'; btn.setAttribute('data-more','');
+      rest[0].insertAdjacentElement('beforebegin',btn); }
+    btn.setAttribute('aria-expanded',open?'true':'false');
+    var want=open?'접기':'더 보기 <small>12개월 병원비 · 맞춤도 · 유기동물</small>';
+    if(btn.getAttribute('data-l')!==String(open)){ btn.innerHTML=want; btn.setAttribute('data-l',String(open)); }
+    rest.forEach(function(x){ if(x.classList.contains('is-folded')===open) x.classList.toggle('is-folded',!open); });
+  }
+  function sheets(){
+    var bodies=document.querySelectorAll('#sheets .sheet__body');
+    [].forEach.call(bodies,function(b){
+      var hp=b.querySelector(':scope > header.sec > p'); if(hp&&!hp.classList.contains('clamp')) hp.classList.add('clamp');
+      [].forEach.call(b.querySelectorAll('.est__pick small, .choice small'),function(x){ if(!x.classList.contains('clamp')){ x.classList.add('clamp','clamp1'); } });
+      if(b.querySelector(':scope > .est')){
+        [].forEach.call(b.querySelectorAll(':scope > section.sec'),function(x){ if(!x.classList.contains('fold')&&x.querySelector(':scope > .sec__h')) x.classList.add('fold'); });
+      }
+    });
+  }
+  function run(){ home(); sheets(); }
+  document.addEventListener('click',function(e){
+    var t=e.target;
+    if(t.closest&&t.closest('[data-more]')){ open=!open; home(); return; }
+    var c=t.closest&&t.closest('.clamp'); if(c&&!t.closest('label.est__pick input')){ c.classList.toggle('is-open'); }
+    var f=t.closest&&t.closest('.fold > .sec__h'); if(f){ f.parentElement.classList.toggle('is-open'); }
+  });
+  ['view','sheets'].forEach(function(id){ var el=document.getElementById(id); if(el) new MutationObserver(run).observe(el,{childList:true,subtree:true}); });
+  window.addEventListener('load',run); run();
+})();
+</script>
+
+<script>
+/* life journey: health -> birthday -> album -> farewell, one entry on home, one timeline screen */
+(function(){
+  var IC={
+    run:'<svg viewBox="0 0 24 24"><path d="M12 21s-7.500-4.600-7.500-10.200A4.300 4.300 0 0 1 12 8a4.300 4.300 0 0 1 7.500 2.800C19.500 16.400 12 21 12 21z"/></svg>',
+    cake:'<svg viewBox="0 0 24 24"><path d="M11 3h2v4h-2zM5 9h14v4H5zm-1 6h16v6H4z"/></svg>',
+    photo:'<svg viewBox="0 0 24 24"><path d="M4 6h4l1.500-2h5L16 6h4v13H4zm8 3.500a3.500 3.500 0 1 0 0 7 3.500 3.500 0 0 0 0-7z"/></svg>',
+    bow:'<svg viewBox="0 0 24 24"><path d="M3 18a9 9 0 0 1 18 0h-2.500a6.500 6.500 0 0 0-13 0zm5 0a4 4 0 0 1 8 0h-2.500a1.500 1.500 0 0 0-3 0z"/></svg>'
+  };
+  var pet={name:'우리 아이',age:'',kg:'',img:''}, photos={}, done={}, openKey='health';
+  function read(){
+    var h=document.querySelector('#view .herocard h1'); if(!h) return;
+    var m=h.textContent.match(/^(.+?)의 오늘/); if(m) pet.name=m[1];
+    var a=document.querySelector('#view .herocard__meta'); if(a){ var p=a.textContent.split('·'); pet.age=(p[1]||'').trim(); }
+    var k=document.querySelector('#view .kgbadge b'); if(k) pet.kg=k.textContent.trim();
+    var im=document.querySelector('#view .herocard img'); pet.img=im?im.src:'';
+  }
+  function toBirthday(){ var m=pet.age.match(/(\d+)\s*개월/), mo=m?+m[1]:0; if(!/살/.test(pet.age)&&m) mo=mo%12; var left=12-(mo%12); return left===12?'이번 달':left+'개월 뒤'; }
+  function nextAge(){ var m=pet.age.match(/(\d+)\s*살/); return (m?+m[1]:0)+1; }
+  function chk(key,items){ return items.map(function(t,i){ var id=pet.name+'|'+key+'|'+i; return '<label class="lchk"><input type="checkbox" data-life-chk="'+id+'"'+(done[id]?' checked':'')+'><span>'+t+'</span></label>'; }).join(''); }
+  function stages(){
+    var n=pet.name, ph=photos[n]||(photos[n]=[]);
+    return [
+      {k:'health',when:'지금',t:'다이어트 · 운동 · 웰빙',em:pet.kg||'',c:
+        '<div class="lkv"><div><small>지금 몸무게</small><b>'+(pet.kg||'-')+'</b></div><div><small>오늘 산책 목표</small><b>30분</b></div></div>'
+        +'<p class="lstage__p">몸무게에 맞춰 오늘 할 일을 정리했어요. 하나씩 체크해 보세요.</p>'
+        +chk('health',['오늘 산책 30분 하기','간식은 정해 둔 양만 주기','이번 주 몸무게 재서 기록하기','물그릇 깨끗하게 갈아 주기'])},
+      {k:'birthday',when:'매년',t:nextAge()+'살 생일 준비',em:toBirthday(),c:
+        '<p class="lstage__p">생일은 '+toBirthday()+'예요. 축하도 하고, 1년에 한 번 건강도 같이 챙겨요.</p>'
+        +chk('birthday',['생일 건강검진 예약하기','강아지용 케이크 준비하기','생일 사진 찍어서 앨범에 담기','올해 몸무게와 키운 기록 돌아보기'])},
+      {k:'album',when:'언제나',t:'사진 앨범',em:(ph.length+(pet.img?1:0))+'장',c:
+        '<p class="lstage__p">'+n+'와 보낸 날을 사진으로 모아요. 병원 다녀온 날, 생일, 산책한 날도 좋아요.</p>'
+        +'<div class="lalbum">'+(pet.img?'<div><img src="'+pet.img+'" alt="'+n+' 사진"></div>':'')+ph.map(function(u){return '<div><img src="'+u+'" alt="추가한 사진"></div>';}).join('')
+        +'<label><i>+</i>사진 추가<input type="file" accept="image/*" multiple data-life-photo></label></div>'},
+      {k:'farewell',when:'나중에',t:'무지개다리 준비',em:'미리 알아 두기',c:
+        '<div class="lsoft">아직 먼 이야기예요. 그래도 미리 알아 두면, 그날이 왔을 때 덜 막막해요.</div>'
+        +chk('farewell',['나이 들었을 때 검진 주기 정해 두기',n+'가 좋아하는 것들 적어 두기','마지막 인사 방법 미리 알아보기','사진과 영상 한곳에 모아 두기'])}
+    ];
+  }
+  var el;
+  function render(){
+    if(!el) return; var st=stages();
+    el.querySelector('.life__body').innerHTML='<h1 class="life__lead">'+pet.name+'와 함께하는 시간</h1><p class="life__sub">병원 가는 날만이 아니라, 평소부터 마지막까지 미리 챙겨요.</p>'
+      +st.map(function(x){ return '<section class="lstage'+(x.k===openKey?' is-open':'')+'" data-stage="'+x.k+'"><span class="lstage__dot"></span><button type="button" class="lstage__h" data-life-open="'+x.k+'"><span><small>'+x.when+'</small><b>'+x.t+'</b></span><em>'+x.em+'</em></button><div class="lstage__c">'+x.c+'</div></section>'; }).join('');
+  }
+  function show(k){
+    var ph=document.getElementById('phone'); if(!ph) return; openKey=k||openKey;
+    if(!el){ el=document.createElement('section'); el.className='life'; el.setAttribute('role','dialog'); el.setAttribute('aria-label','함께하는 시간');
+      el.innerHTML='<div class="life__bar"><button type="button" class="life__back" data-life-close>‹ 뒤로</button><b>함께하는 시간</b></div><div class="life__body"></div>'; ph.appendChild(el); }
+    render();
+    var o=el.querySelector('.lstage.is-open'); if(o&&o.scrollIntoView) o.scrollIntoView({block:'nearest'});
+  }
+  function card(){
+    var v=document.getElementById('view'); if(!v||!v.querySelector('.quick')) return; read();
+    if(v.querySelector('.lifecard')) return;
+    var secs=v.querySelectorAll('section.sec'), anchor=null;
+    for(var i=0;i<secs.length;i++){ var h=secs[i].querySelector('.sec__h h2'); if(h&&/이어서 챙길 일/.test(h.textContent)){ anchor=secs[i]; break; } }
+    if(!anchor) anchor=v.querySelector('.quick'); if(!anchor) return;
+    var d=document.createElement('div'); d.className='lifecard'; d.setAttribute('role','region'); d.setAttribute('aria-label','함께하는 시간');
+    d.innerHTML='<div class="lifecard__h"><b>'+pet.name+'와 함께하는 시간</b><span>지금부터 마지막까지</span></div>'
+      +'<div class="lifecard__track"><button type="button" data-life="health"><i>'+IC.run+'</i><b>건강 습관</b><small>지금</small></button><button type="button" data-life="birthday"><i>'+IC.cake+'</i><b>생일 준비</b><small>매년</small></button><button type="button" data-life="album"><i>'+IC.photo+'</i><b>사진 앨범</b><small>언제나</small></button><button type="button" data-life="farewell"><i>'+IC.bow+'</i><b>무지개다리</b><small>나중에</small></button></div>';
+    anchor.insertAdjacentElement('afterend',d);
+  }
+  document.addEventListener('click',function(e){
+    var t=e.target.closest&&e.target.closest('[data-life],[data-life-open],[data-life-close]'); if(!t) return;
+    if(t.hasAttribute('data-life')) show(t.getAttribute('data-life'));
+    else if(t.hasAttribute('data-life-open')){ var k=t.getAttribute('data-life-open'); openKey=(openKey===k?'':k); render(); }
+    else if(el){ el.remove(); el=null; }
+  });
+  document.addEventListener('change',function(e){
+    var t=e.target; if(!t||!t.getAttribute) return;
+    if(t.hasAttribute('data-life-chk')){ done[t.getAttribute('data-life-chk')]=t.checked; }
+    else if(t.hasAttribute('data-life-photo')&&t.files){ var list=photos[pet.name]||(photos[pet.name]=[]), n=t.files.length, c=0;
+      [].forEach.call(t.files,function(f){ var r=new FileReader(); r.onload=function(){ list.push(r.result); if(++c===n) render(); }; r.readAsDataURL(f); }); }
+  });
+  var v=document.getElementById('view'); if(v) new MutationObserver(card).observe(v,{childList:true,subtree:true});
+  window.addEventListener('load',card); card();
+})();
+</script>
 </body>
 </html>
