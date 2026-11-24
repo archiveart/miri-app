@@ -786,6 +786,68 @@ input[type="checkbox"],input[type="radio"]{accent-color:#00A383}
 .tour-card__quit{background:#2A2F36;color:#C9CED5}
 .tour-card__bar{height:4px;border-radius:2px;background:#2A2F36;margin-top:12px;overflow:hidden}
 .tour-card__bar i{display:block;height:100%;background:#2CE5B9;border-radius:2px;transition:width .3s}
+
+/* butler: compact home card + chat */
+.butler{margin:18px 0 6px;background:#15181C;color:#fff;border-radius:24px;padding:18px}
+.butler__top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.butler__face{width:44px;height:44px;border-radius:50%;background:#2CE5B9;display:grid;place-items:center;flex:none}
+.butler__face svg{width:28px;height:28px}
+.butler__n{font-size:18px;font-weight:700;letter-spacing:-.03em;line-height:1.3;display:flex;align-items:center;gap:6px}
+.butler__n i{font-style:normal;font-size:11px;font-weight:800;letter-spacing:.02em;background:#2CE5B9;color:#053A30;border-radius:6px;padding:2px 6px}
+.butler__k{font-size:14px;line-height:1.4;letter-spacing:-.02em;color:#C9CED5}
+.butler__chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.butler__chips button,.bchat__chips button{border:0;border-radius:999px;background:#2A2F36;color:#fff;font:600 14.5px/1 inherit;font-family:inherit;letter-spacing:-.02em;height:38px;padding:0 14px;cursor:pointer;white-space:nowrap;-webkit-tap-highlight-color:transparent}
+.butler__ask{display:flex;align-items:center;justify-content:center;width:100%;height:50px;border:0;border-radius:16px;background:#2CE5B9;color:#053A30;font:700 16px/1 inherit;font-family:inherit;letter-spacing:-.025em;cursor:pointer}
+.butler-note{display:flex;gap:12px;align-items:center;width:100%;border:0;text-align:left;background:#15181C;color:#fff;border-radius:18px;padding:14px 16px;margin:12px 0 6px;font-family:inherit;cursor:pointer}
+.butler-note b{display:block;font-size:16px;font-weight:700;letter-spacing:-.025em;line-height:1.35}
+.butler-note small{display:block;font-size:13.5px;color:#C9CED5;letter-spacing:-.015em;line-height:1.4}
+.bchat{position:absolute;inset:0;z-index:40;background:#fff;display:flex;flex-direction:column;font-family:"Miri Pretendard",Pretendard,system-ui,sans-serif}
+.bchat__bar{display:flex;align-items:center;gap:10px;padding:max(8px,env(safe-area-inset-top)) 12px 10px;border-bottom:1px solid #ECEEF1}
+.bchat__bar b{display:block;font-size:17px;font-weight:700;letter-spacing:-.03em;line-height:1.3;color:#15181C}
+.bchat__bar small{display:block;font-size:12.5px;color:#00856A;font-weight:600;letter-spacing:-.01em}
+.bchat__bar .butler__face{width:36px;height:36px}.bchat__bar .butler__face svg{width:22px;height:22px}
+.bchat__back{border:0;background:#F4F5F7;color:#15181C;border-radius:999px;height:44px;padding:0 14px;font:700 15px/1 inherit;font-family:inherit;letter-spacing:-.02em;cursor:pointer}
+.bchat__log{flex:1;overflow-y:auto;padding:16px 16px 8px;display:flex;flex-direction:column;gap:10px;background:#F4F5F7}
+.bmsg{max-width:84%;display:flex;flex-direction:column;gap:8px}
+.bmsg p{margin:0;padding:12px 14px;border-radius:18px;font-size:15.5px;line-height:1.5;letter-spacing:-.02em;word-break:keep-all}
+.bmsg--bot{align-self:flex-start}.bmsg--bot p{background:#fff;color:#15181C;border-top-left-radius:6px}
+.bmsg--me{align-self:flex-end}.bmsg--me p{background:#15181C;color:#fff;border-top-right-radius:6px}
+.bmsg.is-wait p{color:#8A929D;letter-spacing:.2em}
+.bmsg__acts{display:flex;flex-wrap:wrap;gap:8px}
+.bmsg__acts button{border:0;border-radius:999px;height:40px;padding:0 16px;background:#2CE5B9;color:#053A30;font:700 14.5px/1 inherit;font-family:inherit;letter-spacing:-.02em;cursor:pointer}
+.bchat__chips{display:flex;gap:8px;overflow-x:auto;padding:10px 16px;background:#F4F5F7;scrollbar-width:none}
+.bchat__chips button{background:#fff;color:#15181C;flex:none}
+.bchat__in{display:flex;gap:8px;padding:10px 12px max(12px,env(safe-area-inset-bottom));border-top:1px solid #ECEEF1;background:#fff}
+.bchat__in input{flex:1;min-width:0;height:48px;border:0;border-radius:999px;background:#F4F5F7;padding:0 18px;font:500 16px/1 inherit;font-family:inherit;letter-spacing:-.02em;color:#15181C;outline:none}
+.bchat__in button{width:48px;height:48px;border:0;border-radius:50%;background:#2CE5B9;color:#053A30;font:800 20px/1 inherit;cursor:pointer;flex:none}
+
+/* accompany-care service block */
+.butler__care{display:flex;align-items:center;justify-content:space-between;width:100%;margin-top:8px;border:0;border-radius:16px;background:#2A2F36;color:#fff;padding:12px 16px;text-align:left;font-family:inherit;cursor:pointer}
+.butler__care b{display:block;font-size:15.5px;font-weight:700;letter-spacing:-.025em;line-height:1.35}
+.butler__care small{display:block;font-size:13px;color:#C9CED5;letter-spacing:-.015em;line-height:1.4}
+.butler__care::after{content:"";width:8px;height:8px;border-right:2px solid #C9CED5;border-top:2px solid #C9CED5;transform:rotate(45deg);flex:none}
+.care{margin:14px 0 4px;border-radius:26px;padding:22px 20px 20px;background:linear-gradient(160deg,#2CE5B9 0%,#14D2A4 100%);color:#053A30}
+.care__badge{display:inline-block;background:#053A30;color:#fff;font-size:12.5px;font-weight:700;letter-spacing:-.01em;border-radius:999px;padding:5px 11px;margin-bottom:12px}
+.care__t{font-size:26px;font-weight:800;letter-spacing:-.04em;line-height:1.2;margin:0 0 6px;color:#053A30}
+.care__d{font-size:15.5px;line-height:1.5;letter-spacing:-.025em;word-break:keep-all;margin:0 0 16px;color:#053A30}
+.care__steps{list-style:none;margin:0 0 14px;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;position:relative}
+.care__steps::before{content:"";position:absolute;left:12.5%;right:12.5%;top:22px;height:2px;background:rgba(5,58,48,.25)}
+.care__steps li{display:flex;flex-direction:column;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:-.02em;text-align:center;line-height:1.3;position:relative}
+.care__steps span{width:44px;height:44px;border-radius:50%;background:#fff;display:grid;place-items:center}
+.care__steps svg{width:22px;height:22px;fill:#053A30}
+.care__safe{list-style:none;margin:0 0 16px;padding:14px 16px;background:rgba(255,255,255,.55);border-radius:16px;display:flex;flex-direction:column;gap:8px}
+.care__safe li{font-size:14.5px;font-weight:600;letter-spacing:-.02em;line-height:1.35;padding-left:24px;position:relative}
+.care__safe li::before{content:"";position:absolute;left:2px;top:3px;width:12px;height:7px;border-left:2.5px solid #053A30;border-bottom:2.5px solid #053A30;transform:rotate(-45deg)}
+.care__go{display:block;width:100%;height:54px;border:0;border-radius:18px;background:#15181C;color:#fff;font:700 17px/1 inherit;font-family:inherit;letter-spacing:-.03em;cursor:pointer}
+
+/* weight-based recommendation emphasis */
+.kgpill{background:var(--mint);color:#053A30;border-radius:999px;padding:5px 12px;font-size:13.5px;font-weight:600;letter-spacing:-.015em;white-space:nowrap}
+.kgpill b{font-weight:800;font-size:15px}
+.est__head{align-items:center}
+.kgnote{margin:10px 0 2px;padding:12px 14px;border-radius:14px;background:#DCFBF2;color:#053A30;font-size:14.5px;line-height:1.45;letter-spacing:-.02em;word-break:keep-all}
+.kgnote b{font-weight:800}
+.kgbadge{display:inline-flex;align-items:baseline;gap:5px;align-self:flex-start;background:#15181C;color:#fff;border-radius:999px;padding:5px 12px;margin:6px 0 4px;font-size:13px;font-weight:600;letter-spacing:-.015em}
+.kgbadge b{color:#2CE5B9;font-size:15px;font-weight:800}
 </style>
 </head>
 <body>
@@ -2206,7 +2268,7 @@ const VIEWS = {
 ${petSwitch()}
 <section class="herocard" aria-label="${esc(p.name)} 소개">
 <div class="herocard__art ${artCut() ? 'is-cut' : ''}">${petArt(p)}</div>
-<button class="herocard__txt" data-act="illeo"><span class="herocard__meta">${esc(c.breed)} · ${ageText(c.ageM)} · ${p.weight}kg</span><h1>${esc(p.name)}의 오늘</h1><p>${wait ? `일러주기 ${wait}건 답하기 ›` : '챙길 일을 미리 일러드려요 ›'}</p></button>
+<button class="herocard__txt" data-act="illeo"><span class="herocard__meta">${esc(c.breed)} · ${ageText(c.ageM)} </span><span class="kgbadge"><b>${p.weight}kg</b> 맞춤 추천</span><h1>${esc(p.name)}의 오늘</h1><p>${wait ? `일러주기 ${wait}건 답하기 ›` : '챙길 일을 미리 일러드려요 ›'}</p></button>
 <label class="herocard__cam">${ic('camera')}<span class="sr-only">${esc(p.name)} 사진 넣기</span><input class="sr-only" type="file" accept="image/*" id="heroPhoto"></label>
 </section>
 <nav class="quick" aria-label="자주 쓰는 기능">
@@ -2295,7 +2357,7 @@ ${adoptHtml()}
   concierge(c) {
     const reqs = S.requests || [];
     return `
-    <header class="sec"><h1 class="t-lg">컨시어지</h1>
+    <header class="sec"><h1 class="t-lg">미리 컨시어지</h1>
       <p>가격을 묻기 어려운 순간에 대신 물어봐 드려요.</p>
       <p class="t-sm">비용을 따지면 아이를 덜 아끼는 사람처럼 보일까 봐 삼킨 질문을, 제3자가 같은 조건으로 여러 병원에 묻습니다.</p>
     </header>
@@ -2420,7 +2482,7 @@ function cardHtml(id, first) {
     <section class="est c-${look[0]} ${first ? 'est--print' : ''}" aria-label="미리 받는 견적">
       <div class="notice__band"></div>
       <div class="est__in">
-        <div class="est__head"><b style="color:var(--ink)">미리 받는 견적</b><span>${N} ${c.p.weight}kg 기준</span></div>
+        <div class="est__head"><b style="color:var(--ink)">미리 받는 견적</b><span class="kgpill">${N} <b>${c.p.weight}kg</b> 맞춤</span></div><p class="kgnote"><b>몸무게 ${c.p.weight}kg</b>에 맞춰 계산했어요. 체중이 다르면 추천과 금액이 달라져요.</p>
         ${stages}
         ${total}
       </div>
@@ -3205,5 +3267,103 @@ window.addEventListener('hashchange', () => { const h = location.hash.slice(1); 
   if(/[?&#]tour\b/.test(location.search+location.hash)) window.addEventListener('load',function(){ setTimeout(function(){ show(0); },700); });
 })();
 </script>
+
+<script>
+/* butler: short home card + AI-style answer chat (scripted demo answers) */
+(function(){
+  var FACE='<svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="10.5" r="5.5" fill="#15181C"/><path d="M5 27c0-6 4.800-9.500 11-9.500S27 21 27 27z" fill="#15181C"/><path d="M11.200 18.200 16 21.400l4.800-3.200v4.600L16 21.400l-4.800 1.400z" fill="#2CE5B9"/><circle cx="16" cy="21.400" r="1.300" fill="#2CE5B9"/></svg>';
+  function tab(n){ var t=document.querySelector('#tabbar [data-tab="'+n+'"]'); if(t) t.click(); }
+  function later(f){ setTimeout(f,330); }
+  var DO={
+    quote:function(){ tab('concierge'); later(function(){ var b=document.querySelector('#view [data-type="quote"]'); if(b) b.click(); }); },
+    escort:function(){ tab('concierge'); later(function(){ var b=document.querySelector('#view [data-type="escort"]'); if(b) b.click(); }); },
+    vet:function(){ tab('home'); later(function(){ var b=document.querySelector('.quick [data-act="vet"]'); if(b) b.click(); }); },
+    card:function(){ tab('cards'); later(function(){ var b=document.querySelector('#view [data-act="card"]'); if(b) b.click(); }); },
+    all:function(){ tab('concierge'); }
+  };
+  function petName(){ var h=document.querySelector('#view .herocard h1'); var m=h&&h.textContent.match(/^(.+?)의 오늘/); if(m) petName.last=m[1]; return petName.last||'우리 아이'; }
+  var QA=[
+    {q:'병원비 얼마쯤 들까요?',re:/얼마|비용|병원비|가격|돈|스케일|치석/,a:function(n){var k=document.querySelector('#view .kgbadge b');return n+(k?'의 몸무게 '+k.textContent+'에 맞춰서':'에게 맞춰서')+', 꼭 할 것과 골라도 되는 것의 예상 금액을 정리해 뒀어요. 몸무게가 다르면 금액도 달라져요.';},acts:[['card','예상 금액 보기'],['quote','세 곳 값 물어보기']]},
+    {q:'이 검사 꼭 해야 하나요?',re:/꼭|필요|해야|검사|거절/,a:function(){return '꼭 해야 하는 것과 미뤄도 되는 것이 있어요. 병원에서 직접 묻기 어려우면, 화면을 내밀어서 대신 물어보세요.';},acts:[['vet','병원에 보여주기']]},
+    {q:'병원 갈 시간이 없어요',re:/시간|바빠|바쁘|대신|데려|데리|못 가/,a:function(n){return '제가 '+n+'를 데리고 다녀올게요. 정해 둔 금액 안에서만 결제하고, 검사를 더 할 땐 먼저 전화드려요.';},acts:[['escort','대신 데려가기 맡기기']]},
+    {q:'어느 병원이 덜 비싸요?',re:/싼|싸|비싸|비교|어느 병원|병원 추천|추천/,a:function(){return '같은 조건으로 병원 세 곳에 총 금액을 대신 물어보고, 나란히 비교해 드려요.';},acts:[['quote','세 곳 값 물어보기']]}
+  ];
+  var chat;
+  function esc(t){ return String(t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function open(firstQ){
+    var ph=document.getElementById('phone'); if(!ph) return;
+    if(chat) chat.remove();
+    chat=document.createElement('section'); chat.className='bchat'; chat.setAttribute('role','dialog'); chat.setAttribute('aria-label','미리 컨시어지에게 물어보기');
+    chat.innerHTML='<div class="bchat__bar"><button type="button" class="bchat__back" data-bchat="close">‹ 뒤로</button><span class="butler__face">'+FACE+'</span><div><b>미리 컨시어지</b><small>AI 답변 · 시연용 예시</small></div></div>'
+      +'<div class="bchat__log" aria-live="polite"></div>'
+      +'<div class="bchat__chips"></div>'
+      +'<form class="bchat__in"><input type="text" placeholder="궁금한 걸 적어 보세요" aria-label="질문 입력" autocomplete="off"><button type="submit" aria-label="보내기">↑</button></form>';
+    ph.appendChild(chat);
+    say('bot','안녕하세요, 미리 컨시어지예요. '+petName()+'에 대해 궁금한 걸 물어보세요.');
+    chips();
+    chat.querySelector('form').addEventListener('submit',function(e){ e.preventDefault(); var i=chat.querySelector('input'); var v=i.value.trim(); if(v){ i.value=''; ask(v); } });
+    if(firstQ) ask(firstQ);
+  }
+  function chips(){ var c=chat.querySelector('.bchat__chips'); c.innerHTML=QA.map(function(x,i){return '<button type="button" data-bq="'+i+'">'+x.q+'</button>';}).join(''); }
+  function say(who,text,acts){
+    var log=chat.querySelector('.bchat__log'), d=document.createElement('div'); d.className='bmsg bmsg--'+who;
+    d.innerHTML='<p>'+esc(text)+'</p>'+(acts?'<div class="bmsg__acts">'+acts.map(function(a){return '<button type="button" data-bdo="'+a[0]+'">'+a[1]+'</button>';}).join('')+'</div>':'');
+    log.appendChild(d); log.scrollTop=log.scrollHeight; return d;
+  }
+  function ask(text){
+    say('me',text);
+    var hit=null; for(var i=0;i<QA.length;i++){ if(QA[i].q===text||QA[i].re.test(text)){ hit=QA[i]; break; } }
+    var w=say('bot','…'); w.classList.add('is-wait');
+    setTimeout(function(){ if(!chat) return; w.remove();
+      if(hit) say('bot',hit.a(petName()),hit.acts);
+      else say('bot','이 화면은 시연용이라, 준비된 질문에만 답할 수 있어요. 아래 질문을 눌러 보세요.');
+    },650);
+  }
+  function paint(){
+    var v=document.getElementById('view'); if(!v) return;
+    var q=v.querySelector('.quick');
+    if(q&&!v.querySelector('.butler')){
+      var d=document.createElement('section'); d.className='butler'; d.setAttribute('aria-label','미리 컨시어지');
+      d.innerHTML='<div class="butler__top"><span class="butler__face">'+FACE+'</span><div><div class="butler__n">미리 컨시어지 <i>AI</i></div><div class="butler__k">물어보면 답하고, 대신 알아봐 드려요</div></div></div>'
+        +'<div class="butler__chips">'+QA.slice(0,3).map(function(x,i){return '<button type="button" data-bopen="'+i+'">'+x.q+'</button>';}).join('')+'</div>'
+        +'<button type="button" class="butler__ask" data-bopen="">컨시어지에게 물어보기</button>'
+        +'<button type="button" class="butler__care" data-bdo="all"><span><b>병원 동행 케어</b><small>케어 매니저가 병원에 데려다줘요</small></span></button>';
+      q.insertAdjacentElement('afterend',d);
+    }
+    var h=v.querySelector('h1.t-lg');
+    if(h&&h.textContent.trim()==='미리 컨시어지'&&!v.querySelector('.care')){
+      var n=h.nextElementSibling; while(n&&n.tagName==='P'){ n.style.display='none'; n=n.nextElementSibling; }
+      var c=document.createElement('section'); c.className='care'; c.setAttribute('aria-label','병원 동행 케어');
+      var IC={
+        home:'<svg viewBox="0 0 24 24"><path d="M4 11.200 12 4l8 7.200V20h-5.500v-5h-5v5H4z"/></svg>',
+        car:'<svg viewBox="0 0 24 24"><path d="M5.600 7.500h12.800l2.100 5V18h-2.300a2 2 0 0 1-4 0H9.800a2 2 0 0 1-4 0H3.500v-5.500zm1.300 2-1 2.500h12.200l-1-2.500z"/></svg>',
+        vet:'<svg viewBox="0 0 24 24"><path d="M10 4h4v6h6v4h-6v6h-4v-6H4v-4h6z"/></svg>',
+        doc:'<svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6zm3 8v2h7v-2zm0 4v2h7v-2z"/></svg>'
+      };
+      c.innerHTML='<div class="care__badge">전문 케어 서비스</div>'
+        +'<h2 class="care__t">병원 동행 케어</h2>'
+        +'<p class="care__d">케어 매니저가 집 앞에서 병원까지, 진료가 끝나면 다시 집까지 함께해요.</p>'
+        +'<ol class="care__steps"><li><span>'+IC.home+'</span>집 앞 픽업</li><li><span>'+IC.car+'</span>병원 이동</li><li><span>'+IC.vet+'</span>진료 동행</li><li><span>'+IC.doc+'</span>결과 전달</li></ol>'
+        +'<ul class="care__safe"><li>정해 둔 금액 안에서만 결제</li><li>검사를 더 할 땐 먼저 전화</li><li>진료 내용과 영수증 기록</li></ul>'
+        +'<button type="button" class="care__go" data-bdo="escort">동행 케어 신청하기</button>';
+      h.insertAdjacentElement('afterend',c);
+      var p=document.createElement('button'); p.type='button'; p.className='butler-note'; p.setAttribute('data-bopen','');
+      p.innerHTML='<span class="butler__face">'+FACE+'</span><span><b>AI 컨시어지에게 물어보기</b><small>무엇을 맡기면 좋을지 알려 드려요</small></span>';
+      c.insertAdjacentElement('afterend',p);
+    }
+  }
+  document.addEventListener('click',function(e){
+    var t=e.target.closest&&e.target.closest('[data-bopen],[data-bchat],[data-bq],[data-bdo]'); if(!t) return;
+    if(t.hasAttribute('data-bopen')){ var i=t.getAttribute('data-bopen'); open(i===''?null:QA[+i].q); }
+    else if(t.hasAttribute('data-bchat')){ if(chat){ chat.remove(); chat=null; } }
+    else if(t.hasAttribute('data-bq')){ ask(QA[+t.getAttribute('data-bq')].q); }
+    else if(t.hasAttribute('data-bdo')){ var f=DO[t.getAttribute('data-bdo')]; if(chat){ chat.remove(); chat=null; } if(f) f(); }
+  });
+  var v=document.getElementById('view');
+  if(v){ new MutationObserver(function(){ paint(); }).observe(v,{childList:true,subtree:true}); paint(); }
+  window.addEventListener('load',paint);
+})();
+</script>
+
 </body>
 </html>
